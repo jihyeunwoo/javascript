@@ -34,8 +34,8 @@ let yourObj = new Object({
 console.log(myObj.name, myObj['gender']);
 console.log(yourObj.name, yourObj['born']);
 
-let isOk = true;
-let isNo = false;
+let isOk = true;    //pyton: True
+let isNo = false;   //pyton: False
 
 function myFunc(){
     console.log('hello world');
