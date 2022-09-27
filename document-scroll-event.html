@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery scroll event example</title>
+    <script src="lib/jquery-3.6.1.js"></script>
+    <style>
+        html{font-size: 20px;}
+        .contents{
+            max-width: 90%;
+            margin: 0 auto;
+            display: flex;
+        }
+        .left{
+            flex: 8
+        }
+        .right{
+            flex: 2
+        }
+        #gnb{
+            position: fixed;
+            top: 5rem;
+            right: 1rem;
+        }
+        h1{
+            margin: 0 0 5rem 0;
+        }
+        p{
+            height: 300px;
+        }
+        .pink{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="contents">
+        <div class="left">
+            <h1>sample document</h1>
+            <h2>subject 1.</h2>
+            <p class="subject1">subject 1. detail Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum labore voluptatem ea ab! Tempora voluptates eum, velit odio error accusantium doloremque ratione nam! Temporibus enim minima consequatur culpa aliquid accusamus.</p>
+            <h2>subject 2.</h2>
+            <p class="subject2">subject 2. detail Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum labore voluptatem ea ab! Tempora voluptates eum, velit odio error accusantium doloremque ratione nam! Temporibus enim minima consequatur culpa aliquid accusamus.</p>
+            <h2>subject 3.</h2>
+            <p class="subject3">subject 3. detail Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum labore voluptatem ea ab! Tempora voluptates eum, velit odio error accusantium doloremque ratione nam! Temporibus enim minima consequatur culpa aliquid accusamus.</p>
+            <h2>subject 4.</h2>
+            <p class="subject4">subject 4. detail Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum labore voluptatem ea ab! Tempora voluptates eum, velit odio error accusantium doloremque ratione nam! Temporibus enim minima consequatur culpa aliquid accusamus.</p>
+            <h2>subject 5.</h2>
+            <p class="subject5">subject 5. detail Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum labore voluptatem ea ab! Tempora voluptates eum, velit odio error accusantium doloremque ratione nam! Temporibus enim minima consequatur culpa aliquid accusamus.</p>
+            <footer>footer contenets</footer>
+        </div>
+        <div class="right">
+            <ul id="gnb">
+                <li><a href="#">subject1</a></li>
+                <li><a href="#">subject2</a></li>
+                <li><a href="#">subject3</a></li>
+                <li><a href="#">subject4</a></li>
+                <li><a href="#">subject5</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            //0. 변수선언
+            let scTop;
+            //1. 스크롤이 시작되면 감지
+            const sub1Top = parseInt($(".subject1").offset().top);
+            const sub2Top = parseInt($(".subject2").offset().top);
+            const sub3Top =parseInt($(".subject3").offset().top);
+            const sub4Top =parseInt($(".subject4").offset().top);
+            const sub5Top = parseInt($(".subject5").offset().top);
+            $(window).scroll(function(){
+                scTop = $(window).scrollTop();
+                console.log(scTop);
+                if(scTop < 300 ){
+                    $("#gnb li").removeClass("pink")
+                    $("#gnb li:nth-child(1)").addClass("pink")
+                } else if(scTop < 700){
+                    $("#gnb li").removeClass("pink")
+                    $("#gnb li:nth-child(2)").addClass("pink")
+                } else if(scTop < 1100){
+                    $("#gnb li").removeClass("pink")
+                    $("#gnb li:nth-child(3)").addClass("pink")
+                } else if(scTop < 1250){
+                    $("#gnb li").removeClass("pink")
+                    $("#gnb li:nth-child(4)").addClass("pink")
+                } else{
+                    $("#gnb li").removeClass("pink")
+                    $("#gnb li:nth-child(5)").addClass("pink")
+                }
+            })
+            const pOffset = [100,200,300,500,700];
+            // .push() : 맨뒤 추가
+            // .pop() : 맨뒤 제거
+            // .shift() : 맨앞 추가
+            // .unshift() : 맨앞 제거
+            // . length : 전체 배열원소 길이 (갯수)
+            $("#gnb li a").click(function(e){
+                e.preventDefault();
+                let el = $(this);
+                let index = el.index();
+                $(window).scrollTop(pOffset[index] -50);
+            })
+        
+            //조건 비교
+            //만약 현재 스크롤TOP이 subject1~5까지 옵셋Top 보다 크면, (=해당 컨텐츠에 도달하면)
+            //내비게이션에 pink 클래스를 적용한다
+        })
+    </script>
+</body>
+</html>

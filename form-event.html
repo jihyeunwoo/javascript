@@ -28,6 +28,7 @@
     </form>
 
     <script>
+        /*
         const myForm = document.querySelector("#my-form");
         const sendBt = document.querySelector("#sendBt");
         myForm.addEventListener("submit", function(e){
@@ -35,8 +36,20 @@
             console.log("submit 이벤트 금지!")
             // let userInfo = {};
             // userInfo.idx = document.getElementsByName("idx").value;
-        })
-        // $(function(){
+        }) */
+         $(function(){
+            //change 이벤트 : 폼 엘리먼트가 변경될때 발생(ex. 검색창 + 검색어!)
+            $("#idx").change(function(e){
+                console.dir(e.target.value);
+            });
+            $("#name").keypress(function(e){
+                console.log("사용자 입력값 : " + e.target.value);
+                let inputValue = e.target.value;
+                if(inputValue.length > 10){
+                    alert("10자 이상 입력했습니다")
+                };
+                console.log("사용자 입력값 : " + inputValue);
+            })
         //     // 전송시 form 새로고침 : default - forbidden
         //     //사용자 정보 객체 ==> 서버로 전송할 데이터!
         //     const userInfo={};
@@ -58,7 +71,7 @@
         //         console.log("blur 발생!");
         //         $(this).css("background-color", "#ffffff");
         //     });
-        // })
+         })
     </script>
 </body>
 </html>
