@@ -49,7 +49,7 @@
             <p class="subject4">subject 4. detail Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum labore voluptatem ea ab! Tempora voluptates eum, velit odio error accusantium doloremque ratione nam! Temporibus enim minima consequatur culpa aliquid accusamus.</p>
             <h2>subject 5.</h2>
             <p class="subject5">subject 5. detail Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum labore voluptatem ea ab! Tempora voluptates eum, velit odio error accusantium doloremque ratione nam! Temporibus enim minima consequatur culpa aliquid accusamus.</p>
-            <footer>footer contenets</footer>
+            <footer>footer contenets Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit harum perferendis eveniet, cupiditate eum enim, distinctio expedita nam architecto esse qui culpa illo? Quae, qui quod! At voluptates sunt voluptas!</footer>
         </div>
         <div class="right">
             <ul id="gnb">
@@ -91,17 +91,18 @@
                     $("#gnb li:nth-child(5)").addClass("pink")
                 }
             })
-            const pOffset = [100,200,300,500,700];
+            const pOffset = [226,616,1006,1396,1786];;
+       
             // .push() : 맨뒤 추가
             // .pop() : 맨뒤 제거
             // .shift() : 맨앞 추가
             // .unshift() : 맨앞 제거
             // . length : 전체 배열원소 길이 (갯수)
-            $("#gnb li a").click(function(e){
+            $("#gnb li").click(function(e){
                 e.preventDefault();
                 let el = $(this);
                 let index = el.index();
-                $(window).scrollTop(pOffset[index] -50);
+                $(window).scrollTop(pOffset[index]-60);
             })
         
             //조건 비교
